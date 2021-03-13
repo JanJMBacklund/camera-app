@@ -27,3 +27,23 @@ cameraTrigger.onclick = function() {
 };
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
+
+data() {
+  return {
+    isCameraOpen: false,
+    isPhotoTaken: false
+  }
+},
+
+methods: {
+  toggleCamera() {
+    if(this.isCameraOpen) {
+      this.isCameraOpen = false;
+      this.isPhotoTaken = false;
+      this.stopCameraStream();
+    } else {
+      this.isCameraOpen = true;
+      this.createCameraElement();
+    }
+  }
+}
